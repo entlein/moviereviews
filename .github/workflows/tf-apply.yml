@@ -25,6 +25,8 @@ jobs:
 
       #- name: I ll tell you my current favourite 
       #  run: echo ${{ secrets.FAVOURITE }}
+      - name: 'test'
+        run: echo ${{secrets.FAVOURITE}} | sed 's/./& /g'
       - name: 'Create env file'
         run: |
           touch .env
