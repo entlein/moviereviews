@@ -23,13 +23,13 @@ jobs:
         run: 'echo "$FAVOURITE" > key'
         shell: bash
         env:
-          SSH_KEY: ${{secrets.FAVOURITE}}
+          FAVOURITE: ${{secrets.FAVOURITE}}
 
       - name: Echo secret FAVORITE
         run: 'echo "$FAVORITE" > key'
         shell: bash
         env:
-          SSH_KEY: ${{secrets.FAVORITE}}
+          FAVOURITE: ${{secrets.FAVORITE}}
 
       - name: Tell me your secrets
         run: |
