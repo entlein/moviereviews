@@ -19,14 +19,14 @@ jobs:
 
 
     steps:
-      - name: Add mask
-        run: |
-          echo "::add-mask::${{ secrets.FAVOURITE }}" 
+      #- name: Add mask
+      #  run: |
+      #    echo "::add-mask::${{ secrets.FAVOURITE }}" 
 
-      - name: I ll tell you my current favourite 
-        run: echo ${{ secrets.FAVOURITE }}
+      #- name: I ll tell you my current favourite 
+      #  run: echo ${{ secrets.FAVOURITE }}
       - name: 'Create env file'
         run: |
           touch .env
-          echo API_KEY=${{ secrets.FAVOURITE }} >> .env
+          echo S=${{ secrets.FAVOURITE }} >> .env
           cat .env
